@@ -1,0 +1,444 @@
+$font-primary: 'Raleway', Arial, sans-serif;
+
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	
+
+
+// Import 
+@import 'bootstrap/mixins';
+@import 'bootstrap/variables';
+
+
+
+
+/* =======================================================
+*
+* 	Template Style 
+*
+* ======================================================= */
+
+body {
+	font-family: $font-primary;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 1.7;
+	color: #777;
+	background: #fff;
+}
+#page {
+	position: relative;
+	overflow-x: hidden;
+	width: 100%;
+	height: 100%;
+	@include transition(.5s);
+	.offcanvas & {
+		overflow: hidden;	
+		position: absolute;
+		
+		&:after {
+			@include transition(2s);
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: 101;
+			background: rgba(0,0,0,.7);
+			content: "";
+		}
+	}
+}
+
+a {
+	color: $brand-primary;
+	@include transition(.5s);
+	&:hover, &:active, &:focus {
+		color: $brand-primary;
+		outline: none;
+		text-decoration: none;
+	}
+}
+p {
+	margin-bottom: 20px;
+}
+
+h1, h2, h3, h4, h5, h6, figure {
+	color: $brand-black;
+	font-family: $font-primary;
+	font-weight: 400;
+	margin: 0 0 20px 0;
+}
+::-webkit-selection {
+  color: $brand-white;
+  background: $brand-primary;
+}
+
+::-moz-selection {
+  color: $brand-white;
+  background: $brand-primary;
+}
+::selection {
+  color: $brand-white;
+  background: $brand-primary;
+}
+
+.gtco-container {
+	max-width: 1140px;
+	position: relative;
+	margin: 0 auto;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.gtco-nav {
+	position: relative;
+	top: 0;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	padding: 10px 0;
+	z-index: 1001;
+	background: $brand-white;
+	@media screen and (max-width: $screen-sm) {
+		padding: 10px 0;
+	}
+	#gtco-logo {
+		font-size: 20px;
+		margin: 0;
+		padding: 0;
+		text-transform: uppercase;
+		font-weight: bold;
+		em {
+			color: $brand-primary;
+		}
+	}
+	
+	.menu-1, .menu-2 {
+		@media screen and (max-width: $screen-sm ) {
+			display: none;
+		}
+	}
+	ul {
+		padding: 0;
+		margin: .4em 0 0 0;
+		li {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+			display: inline;
+			line-height: 1.5;
+			> a {
+				text-transform: uppercase;
+				font-size: 13px!important;
+				letter-spacing: .05em;
+			}
+			a {
+				font-size: 16px;
+				padding: 30px 10px;
+				color: #3ac1bc;
+				@include transition(.5s);
+				&:hover,&:focus, &:active {
+					color: #33a3bd;
+				}
+			}
+			&.has-dropdown {
+				position: relative;
+				> a {
+					position: relative;
+					padding-right: 20px!important;
+					&:after {
+						@include icomoon;
+						content: "\e921";
+						font-style: 10px;
+						position: absolute;
+						top: 50%;
+						margin-top: -7px;
+						right: 0;
+						color: #ccc;
+					}	
+				}
+				.dropdown {
+					width: 130px;
+					-webkit-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.15);
+					-moz-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.15);
+					box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.15);
+					z-index: 1002;
+					visibility: hidden;
+					opacity: 0;
+					position: absolute;
+					top: 40px;
+					left: 0;
+					text-align: left;
+					background: $brand-white;
+					padding: 20px;
+					@include border-radius(4px);
+					@include transition(.0s);
+					&:before {
+						bottom: 100%;
+						// left: 30%;
+						left: 40px;
+						border: solid transparent;
+						content: " ";
+						height: 0;
+						width: 0;
+						position: absolute;
+						pointer-events: none;
+						border-bottom-color: $brand-white;
+						border-width: 8px;
+						margin-left: -8px;
+					}
+
+					li {
+						display: block;
+						margin-bottom: 7px;
+						&:last-child {
+							margin-bottom: 0;
+						}
+						a {
+							padding: 2px 0;
+							display: block;
+							color: lighten($brand-black, 60%);
+							line-height: 1.2;
+							text-transform: none;
+							font-size: 15px;
+							&:hover {
+								color: $brand-black;
+							}
+						}
+						&.active {
+							> a {
+								color: $brand-black!important;
+							}
+						}
+					}
+				}
+				&:hover, &:focus {
+					a {
+						color: #33a3bd;
+					}
+					.dropdown {
+						// visibility: visible;
+						// opacity: 1;
+					}
+				}
+			}
+			&.btn-cta {
+				a {
+					color: $brand-primary;
+					span {
+						background: $brand-white;
+						padding: 4px 20px;
+						@include inline-block;
+						@include transition(.3s);
+						@include border-radius(100px);
+					}
+					&:hover {
+						span {
+							-webkit-box-shadow: 0px 14px 20px -9px rgba(0,0,0,0.75);
+							-moz-box-shadow: 0px 14px 20px -9px rgba(0,0,0,0.75);
+							box-shadow: 0px 14px 20px -9px rgba(0,0,0,0.75);
+						}
+					}
+				}
+			}
+			&.active {
+				> a {
+					color: $brand-black!important;
+				}
+			}
+		}
+	}
+}
+#gtco-header {
+	.text-left {
+		@media screen and (max-width: $screen-xs) {
+			text-align: center!important;
+		}
+	}
+	@media screen and (max-width: $screen-xs) {
+		.btn {
+			display: block;
+			width: 100%;
+		}
+	}
+}
+#gtco-header,
+#gtco-counter,
+.gtco-bg {
+	background-size: cover;
+	background-position: top center;
+	background-repeat: no-repeat;
+	position: relative;
+}
+.gtco-bg {
+	background-position: center center;
+	width: 100%;
+	float: left;
+	position: relative;
+}
+
+.gtco-cover {
+	height: 900px;
+
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	position: relative;
+	float: left;
+	width: 100%;
+	&.gtco-inner {
+		h1 {
+			margin-bottom: 0!important;
+		}
+	}
+	a {
+		color: $brand-primary;
+		&:hover {
+			color: rgba(255,255,255,1);
+		}
+	}
+	.overlay {
+		z-index: 1;
+		position: absolute;
+		bottom: 0;
+		top: 0;
+		left: 0;
+		right: 0;
+		background: rgba(29, 43, 83, .89);
+	}
+	> .gtco-container {
+		position: relative;
+		z-index: 10;
+	}
+	@media screen and (max-width: $screen-sm) {
+		height: 600px;
+		height: inherit!important;
+		padding: 3em 0;
+	}
+	.display-t,
+	.display-tc {
+		height: 900px;
+		display: table;
+		width: 100%;
+		@media screen and (max-width: $screen-sm) {
+			height: 600px;
+			height: inherit!important;
+			padding: 3em 0;
+		}
+	}	
+
+	&.gtco-cover-sm {
+		height: 600px;
+		@media screen and (max-width: $screen-sm) {
+			height: 400px;
+			height: inherit!important;
+		}
+		.display-t,
+		.display-tc {
+			height: 600px;
+			display: table;
+			width: 100%;
+			@media screen and (max-width: $screen-sm) {
+				height: 400px;
+				height: inherit!important;
+				padding: 3em 0;
+			}
+		}	
+	}
+	&.gtco-cover-xs {
+		height: 500px;
+		@media screen and (max-width: $screen-sm) {
+			height: inherit!important;
+			padding: 3em 0;
+		}
+		.display-t,
+		.display-tc {
+			height: 500px;
+			display: table;
+			width: 100%;
+			@media screen and (max-width: $screen-sm) {
+				padding: 3em 0;
+				height: inherit!important;
+			}
+		}	
+	}
+}
+.gtco-client {
+	float: left;
+	width: 100%;
+	padding: 3em 0;
+	background: #f6f6f6;
+	.client {
+		img {
+			margin-top: 10px;
+			@include inline-block;
+		}
+	}
+}
+.gtco-services {
+	padding: 7em 0;
+	
+	.service {
+		margin-left: 10px;
+		margin-right: 10px;
+		text-align: center;
+		padding: 2em;
+		margin-bottom: 30px;
+		position: relative;
+		background: $brand-white;
+		-webkit-box-shadow: 0px 22px 68px -9px rgba(0,0,0,0.15);
+		-moz-box-shadow: 0px 22px 68px -9px rgba(0,0,0,0.15);
+		box-shadow: 0px 22px 68px -9px rgba(0,0,0,0.15);
+		bottom: 0;
+		@include transition(.5s);
+		@media screen and (max-width: $screen-md) {
+			margin-left: 0;
+			margin-right: 0;
+			margin-bottom: 20px;
+		}
+
+		h3 {
+			font-size: 18px;
+			color: #000;
+			text-align: left;
+			position: relative;
+			padding-left: 30px;
+			i {
+				position: absolute;
+				left: 0;
+				top: -0.1em;
+				color: $brand-primary;
+				font-size: 22px!important;
+			}
+		}
+		p {
+			text-align: left;
+			color :#898989;
+			font-size: 15px;
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+		&.changed {
+			bottom: -7em;
+			@media screen and (max-width: $screen-sm) {
+				bottom: 0;
+			}
+		}
+	}
+}
+
+#vista-previa {
+	margin-top: 20px;
+  }
+  #imagen-cuadro {
+	width: 10px;
+	height: 10px;
+	border: 1px solid #ccc;
+	background-color: #fff;
+  }
+  
+/*
