@@ -50,94 +50,85 @@
 //validamos datos del servidor
 $user = "root";
 $pass = "Monse2025";
-$host = "localHost";
+$host = "localhost";
+$dbname = "ecuamaquetas";
 
-//conetamos al base datos
-$connection = mysqli_connect($host, $user, $pass);
+// Conectamos a la base de datos
+$connection = mysqli_connect($host, $user, $pass, $dbname);
 
-//hacemos llamado al imput de formuario
-$nombre = $_POST["nombre"] ;
-$apellido = $_POST["apellido"] ;
-$celular = $_POST["celular"] ;
-$correo = $_POST["correo"] ;
+// Verificamos la conexión a la base de datos
+if (!$connection) {
+    die("No se ha podido conectar con el servidor: " . mysqli_error());
+} else {
+    echo "<b><h3>Hemos conectado al servidor</h3></b>";
+}
+
+// Verificamos la existencia de la tabla "cliente" en la base de datos
+$db = mysqli_select_db($connection, $dbname);
+if (!$db) {
+    echo "No se ha podido encontrar la tabla";
+} else {
+    echo "<h3>Tabla seleccionada:</h3>";
+}
+
+// Verificamos si se envió el formulario
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Obtenemos los valores del formulario
+    $nombre = $_POST["nombre"];
+    $apellido = $_POST["apellido"];
+    $ciudad = $_POST["ciudad"];
+    $celular = $_POST["celular"];
+    $correo = $_POST["correo"];
+    $fecha = $_POST["fecha"];
+    $descripcion = $_POST["descripcion"];
 
 
 
-//verificamos la conexion a base datos
-if(!$connection) 
-        {
-            echo "No se ha podido conectar con el servidor" . mysqli_error ();
+// Preparar y ejecutar la consulta SQL para insertar los datos en la tabla
+$sql = "INSERT INTO tabla_datos (nombre, apellido, ciudad, celular, correo, fecha, descripcion)
+VALUES (:nombre, :apellido, :ciudad, :celular, :correo, :fecha, :descripcion)";
+$stmt = $conn->prepare($sql);
+$stmt->bindParam(':nombre', $nombre);
+$stmt->bindParam(':apellido', $apellido);
+$stmt->bindParam(':ciudad', $ciudad);
+$stmt->bindParam(':celular', $celular);
+$stmt->bindParam(':correo', $correo);
+$stmt->bindParam(':fecha', $fecha);
+$stmt->bindParam(':descripcion', $descripcion);
+$stmt->execute();
+
+
+
+
+
+
+    // Insertamos los datos de registro en la tabla "cliente"
+    $instruccion_SQL = "INSERT INTO cliente (nombre, apellido, cuidad, celular, correo, fecha, descripcion)
+                       VALUES ('$nombre','$apellido','$ciudad''$celular', '$correo', '$fecha', '$descripcion')";
+
+    $resultado = mysqli_query($connection, $instruccion_SQL);
+
+    if ($resultado) {
+        echo "Datos insertados correctamente.";
+    } else {
+        echo "Error al insertar los datos: " . mysqli_error($connection);
+    }
+}
+
+// Consultamos todos los registros de la tabla "cliente"
+$consulta = "SELECT * FROM cliente";
+$result = mysqli_query($connection, $consulta);
+if (!$result) {
+    echo "No se ha podido realizar la consulta";
+} else {
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "" . $row["id"] . "nombre" . $row["nombre"] . " apellido " . $row["apellido"] ." ciudad " . $row["ciudad"] . " Celular " . $row["celular"] . "Correo " . $row["correo"] . "Fecha" . $row["fecha"]." Decripcion" . $row["descripcion"] . "<br>";
         }
-  else
-        {
-            echo "<b><h3>Hemos conectado al servidor</h3></b>" ;
-        }
-        //indicamos el nombre de la base datos
-        $datab = "ecuamaquetas";
+    } else {
+        echo "0 resultados";
+    }
+}
 
-         //indicamos selecionar ala base datos
-         $db = mysqli_select_db($connection,$datab);
-
-         if (!$db)
-         {
-         echo "No se ha podido encontrar la Tabla";
-         }
-         else
-         {
-         echo "<h3>Tabla seleccionada:</h3>" ;
-         }
-
-
-         
-        //insertamos datos de registro al mysql xamp, indicando nombre de la tabla y sus atributos
-        $instruccion_SQL = "INSERT INTO cliente (nombre, apellido, celular, correo)
-        VALUES ('$nombre','$apellido','$celular', '$correo')";
-      
-       
-$resultado = mysqli_query($connection,$instruccion_SQL);
-
-
- //$consulta = "SELECT * FROM tabla where id ='2'"; si queremos que nos muestre solo un registro en especifivo de ID
- $consulta = "SELECT * FROM cliente";
-        
- $result = mysqli_query($connection,$consulta);
- if(!$result) 
- {
-     echo "No se ha podido realizar la consulta";
- }
- echo "<table>";
- echo "<tr>";
- // echo "<th><h1>id</th></h1>";
- echo "<th><h1>Nombre</th></h1>";
- echo "<th><h1>Apellido</th></h1>";
- echo "<th><h1>Celular</th></h1>";
- echo "<th><h1>Correo</th></h1>";
- echo "</tr>";
- 
- while ($colum = mysqli_fetch_array($result))
-  {
-     echo "<tr>";
-     // echo "<td><h2>" . $colum['id']. "</td></h2>";
-     echo "<td><h2>" . $colum['nombre']. "</td></h2>";
-     echo "<td><h2>" . $colum['apellido'] . "</td></h2>";
-     echo "<td><h2>" . $colum['celular'] . "</td></h2>";
-     echo "<td><h2>" . $colum['correo'] . "</td></h2>";
-   
-     echo "</tr>";
- }
- echo "</table>";
- 
- mysqli_close( $connection );
-
- 
-   //echo "Fuera " ;
-   echo'<a href="cotizacion.html"> Volver Atrás</a>';
-
-
+mysqli_close($connection);
 ?>
-
-
-
-
-
- 

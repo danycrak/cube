@@ -98,43 +98,29 @@
 					<input type="text" id="nombre" name="nombre">
 					<label for="apellido">Apellido:</label>
 					<input type="text" id="apellido" name="apellido">
+					<label for="ciudad">Ciudad:</label>
+					<input type="text" id="ciudad" name="apellido">
 					<label for="celular">Celular:</label>
 					<input type="text" id="celular" name="celular">
 					<label for="correo">Correo:</label>
 					<input type="email" id="correo" name="correo">
-					<input type="submit" name="registro">
-					<input type="reset">
+					<label for="fecha">Fecha:</label>
+					<input type="date" id="fecha" name="fecha">
+					<label for="descripcion">Descripcion:</label>
+					<input type="text" id="descripcion" name="fecha">
+					
 				</form>
 
-
-				<button id="pay-button">Guardar</button>
-			</div>
-		</div>
-		<div>
-			<div id="Descripcion">
-				<div class="quote-info">
-					<p>Descripcion</p>
-					<input type="text" id="Dimencion" name="Dimencion">
-
-					<!-- Aquí se mostrará la imagen cargada -->
-
-					<h2>Vista previa:</h2>
-					<div id="vista-previa"></div>
-					<div class="upload-area"></div>
-					<div class="subida">
-						<form action="bd.php" method="post" enctype="multipart/form-data">
-							<input type="file" name="imagen" accept="image/*">
-							<input type="submit" value="Subir imagen">
-						</form>
-					</div>
-
-
-
-
+				<div class="subida">
+					<form action="bd.php" method="post" enctype="multipart/form-data"></form>
+					<button id="pay-button">Guardar</button>
+					
 				</div>
-
-			</div>
+				
 		</div>
+		
+			
+		
 	</header>
 	<!-- END #gtco-header -->
 
@@ -220,9 +206,10 @@
 	<script src="js/magnific-popup-options.js"></script>
 	<!-- Main -->
 	<script src="js/main.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-	------------------------------------------------------------------------------------------------------
-	------------------------------------------------------------------------------------------------------
+
+
 
 	<script>
 		// Agregar un evento de clic al botón
@@ -232,8 +219,23 @@
 			// Obtener los valores de los campos del formulario
 			let nombre = document.getElementById("nombre").value;
 			let apellido = document.getElementById("apellido").value;
+			let ciudad = document.getElementById("ciudad").value;
 			let celular = document.getElementById("celular").value;
 			let correo = document.getElementById("correo").value;
+			let fecha = document.getElementById("fecha").value;
+			let descripcion = document.getElementById("descripcion").value;
+
+			
+			const datos = {
+      nombre: nombre,
+      apellido: apellido,
+      celular: celular,
+	  cuidad: ciudad,
+      correo: correo,
+	  fecha: fecha,
+	  descripcion: descripcion
+
+    };
 
 			// Mostrar los datos guardados en la consola
 			console.log("Nombre:", nombre);
@@ -241,7 +243,15 @@
 			console.log("Celular:", celular);
 			console.log("Correo:", correo);
 
+
+			   // Enviar los datos mediante una petición AJAX al servidor
+			   $.post("bd.php", datos, function (response) {
+      console.log(response);
+
 			// Aquí puedes realizar otras acciones con los datos guardados, como enviarlos a un servidor o almacenarlos en una base de datos
+
+			alert("Datos guardados exitosamente");
+		});
 		});
 	</script>
 	----------------------------------------------------------------------------------------------------------------
