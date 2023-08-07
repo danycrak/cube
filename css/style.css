@@ -27,8 +27,11 @@ body {
   
 
 
- background: -webkit-radial-gradient(rgb(0, 0, 0), rgb(94, 240, 246));
- background: radial-gradient(rgb(0, 0, 0), rgb(94, 240, 246));
+
+ background: -webkit-linear-gradient(31deg, rgb(45, 67, 113), rgb(29, 51, 182));
+ background: linear-gradient(31deg, rgb(45, 67, 113), rgb(29, 51, 182));
+ 
+ 
  
  
 }
@@ -306,8 +309,10 @@ figure {
 #gtco-footer {
 
  
-background: -webkit-linear-gradient(-158deg, rgb(16, 102, 23), rgb(77, 77, 41));
-background: linear-gradient(-158deg, rgb(16, 102, 23), rgb(77, 77, 41));
+
+  background: -webkit-linear-gradient(-70deg, rgb(11, 37, 191), rgb(241, 0, 255));
+  background: linear-gradient(-70deg, rgb(11, 37, 191), rgb(241, 0, 255));
+  
 
   
   padding: 10em 0 0 0 !important;
@@ -384,7 +389,7 @@ background: linear-gradient(-158deg, rgb(16, 102, 23), rgb(77, 77, 41));
 /*cuadro de enviar*/
 
 #gtco-footer .gtco-footer-subscribe .form-control {
-  background: #b20505 !important;
+  background: #3a3939 !important;
   border: none !important;
 }
 
@@ -392,8 +397,12 @@ background: linear-gradient(-158deg, rgb(16, 102, 23), rgb(77, 77, 41));
 
 #gtco-footer .gtco-copyright {
   
-  background: -webkit-linear-gradient(150deg, rgb(5, 5, 5), rgb(244, 0, 243));
-  background: linear-gradient(150deg, rgb(5, 5, 5), rgb(244, 0, 243));
+ 
+
+  background: -webkit-linear-gradient(-51deg, rgb(112, 123, 186), rgb(70, 65, 71));
+  background: linear-gradient(-51deg, rgb(112, 123, 186), rgb(70, 65, 71));
+  
+
   padding: 50px 10px;
   float: left;
   width: 100%;
@@ -534,7 +543,7 @@ form label {
 .gtco-cover .display-tc h2 {
   margin: 0;
   padding: 0;
-  color: rgb(115, 10, 10);
+  color: rgb(57, 52, 52);
 }
 
 #gtco-header .display-tc h1,
@@ -612,7 +621,7 @@ form label {
 }
 
 #gtco-offcanvas a {
-  color: rgba(156, 10, 10, 0.985);
+  color: rgba(69, 63, 63, 0.985);
 }
 
 
@@ -728,13 +737,13 @@ form label {
 }
 
 .gtco-nav-toggle.gtco-nav-white>i {
-  color: #861212;
+  color: #514d4d;
   background: #fff;
 }
 
 .gtco-nav-toggle.gtco-nav-white>i::before,
 .gtco-nav-toggle.gtco-nav-white>i::after {
-  background: #4e0808;
+  background: #413d3d;
 }
 
 .gtco-nav-toggle i::before {
@@ -1069,7 +1078,7 @@ font-size:  10px;
   margin-top: 80px;
   padding: 10px 20px;
   background-color: #d08bf8;
-  color: rgb(162, 93, 246);
+  color: rgb(112, 109, 114);
   text-decoration:underline;
   border: none;
   border-radius: 20px;
