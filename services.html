@@ -54,30 +54,26 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-
 </head>
 
 <body>
-
 	<div class="gtco-loader"></div>
-
 	<div id="page">
-
 		<nav class="gtco-nav" role="navigation">
 			<div class="gtco-container">
 
 				<div class="row">
 					<div class="col-sm-2 col-xs-12">
-						<div id="gtco-logo"><a href="index.html"><img src="images/logo2.png"
+						<div id="gtco-logo"><a href="index.html"><img src="images/cube8.png" width="60px" height="60px" 
 									alt="Free HTML5 Website Template by FreeHTML5.co"></a></div>
 					</div>
 					<div class="col-xs-10 text-right menu-1">
 						<ul>
 							<li><a href="index.html">Inicio</a></li>
 							<li><a href="about.html">Nosotros</a></li>
-							<li  class="active"><a href="services.html">Cotización</a></li>
-							<li ><a href="compra.html">Compra</a></li>
-							<li ><a href="galeria.html">Galeria</a></li>
+							<li class="active"><a href="services.html">Cotización</a></li>
+							<li><a href="compra.html">Compra</a></li>
+							<li><a href="galeria.html">Galeria</a></li>
 							<li><a href="portfolio.html">Ubicación</a></li>
 							<li><a href="contact.html">Contacto</a></li>
 						</ul>
@@ -90,65 +86,139 @@
 	</div>
 	<header id="gtco-header" class="gtco-cover gtco-cover-xs gtco-inner" role="banner">
 
-		<div class="gtco-container">
-			<h1>Selecciona una opción:</h1>
-			<div>
-				<div class="quote-info">
+		<div class="container3">
 
-					<select id="opcion">
 
-						<option value="corte">Corte láser</option>
-						<option value="grabado">Grabado láser</option>
-					</select>
+			<div class="img4">
+				<img src="images/img20.png" alt="" width="500px" height="400px">
 
-					<div id="medidas">
-						<p><strong>Dimensión:</strong> ancho x largo x altura</p>
-						<h2>Medidas:</h2>
-
-						<input type="radio" name="medida" value="10x10"> 10x10 cm<br>
-						<input type="radio" name="medida" value="15x15"> 15x15 cm<br>
-						<input type="radio" name="medida" value="20x20"> 20x20 cm<br>
-						<input type="radio" name="medida" value="25x25"> 25x25 cm<br>
-						<input type="radio" name="medida" value="30x30"> 30x30 cm<br>
-					</div>
-				</div>
-
-				<div class="quote-info">
-
-					<select id="opcion">
-						<option value="impresion">Impresión 3D</option>
-
-					</select>
-
-					<div id="medidas">
-
-						<p><strong>Dimensión:</strong> ancho x largo x altura</p>
-						<h2>Medidas:</h2>
-						<input type="radio" name="medida" value="10x10"> 10x10x10cm<br>
-						<input type="radio" name="medida" value="15x15"> 7,5x7,5x7,5cm<br>
-						<input type="radio" name="medida" value="20x20"> 5,1x5,1x5,1cm<br>
-
-					</div>
-				</div>
+				<img src="images/img21.png" alt="" width="500px" height="400px">
 			</div>
-			<div>
+			<div class="quote-info" id="medidas">
+				<h1>Selecciona una opción:</h1>
+				<select id="opcion" onchange="toggleDimensiones()">
+					<option value="" selected disabled>Selecciona una opción</option>
+					<option value="corte">Corte láser</option>
+					<option value="grabado">Grabado láser</option>
+					<option value="impresion">Impresión 3D</option>
+				</select>
+
+				<div class="medidas-header" id="medidasHeader" style="display: none;">Medidas:</div>
+				<div class="medidas-container" id="medidasContainer" style="display: none;">
+					<select id="dimensiones">
+						<option value="" selected disabled>Selecciona una dimensión</option>
+						<option value="5x5">5x5 cm</option>
+						<option value="10x10">10x10 cm</option>
+						<option value="15x15">15x15 cm</option>
+						<option value="20x20">20x20 cm</option>
+						<option value="25x25">25x25 cm</option>
+						<option value="30x30">30x30 cm</option>
+						<option value="5x5x5">5x5x5 cm</option>
+						<option value="10x10x10">10x10x10 cm</option>
+						<option value="15x15x15">15x15x15 cm</option>
+						<option value="20x20x20">20x20x20 cm</option>
+					</select>
+				</div>
+
+				<button onclick="mostrarRespuesta()">Respuesta</button>
+
+				<div id="respuesta" style="display: none;"></div>
+
+				<script>
+					function toggleDimensiones() {
+						let opcionSelect = document.getElementById("opcion");
+						let medidasHeader = document.getElementById("medidasHeader");
+						let medidasContainer = document.getElementById("medidasContainer");
+
+						if (opcionSelect.value === "") {
+							medidasHeader.style.display = "none";
+							medidasContainer.style.display = "none";
+						} else {
+							medidasHeader.style.display = "block";
+							medidasContainer.style.display = "block";
+						}
+					}
+
+					function mostrarRespuesta() {
+						let opcionSelect = document.getElementById("opcion");
+						let dimensionesSelect = document.getElementById("dimensiones");
+						let respuestaDiv = document.getElementById("respuesta");
+
+						if (opcionSelect.value === "" || dimensionesSelect.value === "") {
+							respuestaDiv.style.display = "none";
+						} else {
+							let opcionSeleccionada = opcionSelect.options[opcionSelect.selectedIndex].text;
+							let dimensionSeleccionada = dimensionesSelect.options[dimensionesSelect.selectedIndex].text;
+							let valorEnDolares = obtenerValorEnDolares(opcionSelect.value, dimensionesSelect.value);
+
+							let respuesta = "Opción seleccionada: " + opcionSeleccionada + ", Dimensión seleccionada: " + dimensionSeleccionada + ", Valor en dólares: $" + valorEnDolares;
+							respuestaDiv.innerHTML = respuesta;
+							respuestaDiv.style.display = "block";
+						}
+					}
+
+					function obtenerValorEnDolares(opcion, dimension) {
+						// Aquí debes definir los valores en dólares para cada combinación de opción y dimensión.
+						// Puedes utilizar un objeto, un arreglo o una función para mapear los valores en dólares.
+						// Por ejemplo, puedes usar un objeto como el siguiente:
+						let valoresEnDolares = {
+							"corte": {
+								"5x5x": 10,
+								"10x10": 15,
+								"15x15": 20,
+								"20x20": 10,
+								"25x25": 15,
+								"30x30": 20,
+								// Agregar el resto de valores en dólares para la opción "corte" y todas las dimensiones
+							},
+							"grabado": {
+								"5x5": 12,
+								"10x10": 18,
+								"15x15": 22,
+								"20x20": 25,
+								"25x25": 35,
+								"30x30": 40,
+								// Agregar el resto de valores en dólares para la opción "grabado" y todas las dimensiones
+							},
+							"impresion": {
+								"5x5": 15,
+								"10x10": 30,
+								"15x15": 40,
+								"20x20": 45,
+								"25x25": 50,
+								"30x30": 60,
+								"5x5x5": 25,
+								"10x10x10": 50,
+								"15x15x15": 70,
+								"20x20x20": 90,
+								// Agregar el resto de valores en dólares para la opción "impresion" y todas las dimensiones
+							}
+						};
+
+						// Devolver el valor en dólares correspondiente a la opción y dimensión seleccionadas.
+						return valoresEnDolares[opcion][dimension];
+					}
+				</script>
+				<button onclick="guardarCotizacion()">Generar Orden</button>
+
+
+
 				
+
+
 			</div>
 
 		</div>
-		</div>
-
-		<button id="guardar">Guardar</button>
-		</div>
 
 
 
-		</div>
+
+
+
+
 
 
 	</header>
-
-
 	<footer id="gtco-footer" class="gtco-section" role="contentinfo">
 		<div class="gtco-container">
 			<div class="row row-pb-md">
@@ -215,6 +285,38 @@
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
 	</div>
+	<script>
+		function guardarCotizacion() {
+		  let opcionSelect = document.getElementById("opcion");
+		  let dimensionesSelect = document.getElementById("dimensiones");
+	  
+		  if (opcionSelect.value === "" || dimensionesSelect.value === "") {
+			alert("Por favor selecciona una opción y una dimensión antes de guardar.");
+		  } else {
+			let opcionSeleccionada = opcionSelect.options[opcionSelect.selectedIndex].text;
+			let dimensionSeleccionada = dimensionesSelect.options[dimensionesSelect.selectedIndex].text;
+			let valorEnDolares = obtenerValorEnDolares(opcionSelect.value, dimensionesSelect.value);
+	  
+			// Construir la URL de la página de destino con los parámetros en la cadena de consulta.
+			let url = "compra.html" +
+			  "?opcion=" + encodeURIComponent(opcionSeleccionada) +
+			  "&dimension=" + encodeURIComponent(dimensionSeleccionada) +
+			  "&valor=" + encodeURIComponent(valorEnDolares);
+	  
+			// Redirigir a la página de destino.
+			window.location.href = url;
+		  }
+		}
+	  </script>
+
+
+
+	
+	  
+	  
+	  
+	  
+	  
 
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
@@ -232,14 +334,10 @@
 	<!-- Main -->
 	<script src="js/main.js"></script>
 
-	------------------------------------------------------------------------------------------------------
-
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
 
 
-	
 </body>
 
 </html>

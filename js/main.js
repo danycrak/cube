@@ -361,4 +361,54 @@
 	});
 
 
+
+
+
+///////////////////////////////////////
+
+// Agregar un evento de clic al botón
+document.getElementById("enviar").addEventListener("click", function (event) {
+	event.preventDefault();// Evitar el comportamiento predeterminado del formulario
+
+	// Obtener los valores de los campos del formulario
+	let nombre = document.getElementById("nombre").value;
+	let apellido = document.getElementById("apellido").value;
+	let ciudad = document.getElementById("ciudad").value;
+	let celular = document.getElementById("celular").value;
+	let correo = document.getElementById("correo").value;
+	let fecha = document.getElementById("fecha").value;
+	let descripcion = document.getElementById("descripcion").value;
+
+
+	const datos = {
+		nombre: nombre,
+		apellido: apellido,
+		celular: celular,
+		ciudad: ciudad,
+		correo: correo,
+		fecha: fecha,
+		descripcion: descripcion
+
+	};
+
+	// Mostrar los datos guardados en la consola
+	console.log("Datos a enviar:", datos);
+	console.log("Nombre:", nombre);
+	console.log("Apellido:", apellido);
+	console.log("Celular:", celular);
+	console.log("Correo:", correo);
+
+
+	// Enviar los datos mediante una petición AJAX al servidor
+	$.post("bd.php", datos, function (response) {
+		console.log(response);
+
+		
+
+		// Aquí puedes realizar otras acciones con los datos guardados, como enviarlos a un servidor o almacenarlos en una base de datos
+
+		alert("Datos guardados exitosamente");
+	});
+});
+
 }());

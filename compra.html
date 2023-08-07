@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <!--
-	Cube by FreeHTML5.co
+	Cube por FreeHTML5.co
 	Twitter: http://twitter.com/gettemplateco
 	URL: http://freehtml5.co
 -->
@@ -9,14 +9,14 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Cube &mdash; Free Website Template, Free HTML5 Template by FreeHTML5.co</title>
+	<title>Cube &mdash; Plantilla gratuita para sitio web, Plantilla HTML5 gratuita de FreeHTML5.co</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
+	<meta name="description" content="Plantilla gratuita para sitio web en HTML5 de FreeHTML5.co" />
 	<meta name="keywords"
-		content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+		content="plantillas gratuitas para sitios web, HTML5 gratuito, plantilla gratuita, Bootstrap gratuito, plantilla para sitio web gratuito, HTML5, CSS3, enfoque móvil, responsive" />
 	<meta name="author" content="FreeHTML5.co" />
 
-	<!-- Facebook and Twitter integration -->
+	<!-- Integración con Facebook y Twitter -->
 	<meta property="og:title" content="" />
 	<meta property="og:image" content="" />
 	<meta property="og:url" content="" />
@@ -31,36 +31,33 @@
 
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="css/animate.css">
-	<!-- Icomoon Icon Fonts-->
+	<!-- Icomoon Icon Fonts -->
 	<link rel="stylesheet" href="css/icomoon.css">
-	<!-- Themify Icons-->
+	<!-- Themify Icons -->
 	<link rel="stylesheet" href="css/themify-icons.css">
-	<!-- Bootstrap  -->
+	<!-- Bootstrap -->
 	<link rel="stylesheet" href="css/bootstrap.css">
 
 	<!-- Magnific Popup -->
 	<link rel="stylesheet" href="css/magnific-popup.css">
 
-	<!-- Owl Carousel  -->
+	<!-- Owl Carousel -->
 	<link rel="stylesheet" href="css/owl.carousel.min.css">
 	<link rel="stylesheet" href="css/owl.theme.default.min.css">
 
-	<!-- Theme style  -->
+	<!-- Estilo del tema -->
 	<link rel="stylesheet" href="css/style.css">
 
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
-	<!-- FOR IE9 below -->
+	<!-- Para versiones de IE9 y anteriores -->
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-
 </head>
 
 <body>
-
 	<div class="gtco-loader"></div>
-
 	<div id="page">
 
 		<nav class="gtco-nav" role="navigation">
@@ -68,8 +65,8 @@
 
 				<div class="row">
 					<div class="col-sm-2 col-xs-12">
-						<div id="gtco-logo"><a href="index.html"><img src="images/logo2.png"
-									alt="Free HTML5 Website Template by FreeHTML5.co"></a></div>
+						<div id="gtco-logo"><a href="index.html"><img src="images/cube8.png" width="60px" height="60px" 
+									alt="Plantilla gratuita para sitio web en HTML5 de FreeHTML5.co"></a></div>
 					</div>
 					<div class="col-xs-10 text-right menu-1">
 						<ul>
@@ -77,7 +74,7 @@
 							<li><a href="about.html">Nosotros</a></li>
 							<li><a href="services.html">Cotización</a></li>
 							<li class="active"><a href="compra.html">Compra</a></li>
-							<li ><a href="galeria.html">Galeria</a></li>
+							<li><a href="galeria.html">Galería</a></li>
 							<li><a href="portfolio.html">Ubicación</a></li>
 							<li><a href="contact.html">Contacto</a></li>
 						</ul>
@@ -87,66 +84,89 @@
 			</div>
 		</nav>
 	</div>
-	</div>
+
 
 	<header id="gtco-header" class="gtco-cover gtco-cover-xs gtco-inner" role="banner">
-		<div class="gtco-container">
-			<h1>Generar Orden</h1>
-			<div class="quote-date">
-				<form action="bd.php" name="Ecuamaquetas" , method="POST">
-					<label for="nombre">Nombre:</label>
-					<input type="text" id="nombre" name="nombre">
-					<label for="apellido">Apellido:</label>
-					<input type="text" id="apellido" name="apellido">
-					<label for="ciudad">Ciudad:</label>
-					<input type="text" id="ciudad" name="apellido">
-					<label for="celular">Celular:</label>
-					<input type="text" id="celular" name="celular">
-					<label for="correo">Correo:</label>
-					<input type="email" id="correo" name="correo">
-					<label for="fecha">Fecha:</label>
-					<input type="date" id="fecha" name="fecha">
-					<label for="descripcion">Descripcion:</label>
-					<input type="text" id="descripcion" name="fecha">
-					
-				</form>
-
-				<div class="subida">
-					<form action="bd.php" method="post" enctype="multipart/form-data"></form>
-					<button id="pay-button">Guardar</button>
-					
-				</div>
+		<div class="container5">
+			<div class="img5">
 				
+
+				<div class="enlace">
+					<img src="images/img25.png" alt="" width="700px" height="600px">
+					<h5>Detalles de la cotización:</h5>
+					<h6>Opción seleccionada: <span id="opcion"></span></h6>
+					<h6>Dimensión seleccionada: <span id="dimension"></span></h6>
+					<h6>Valor en dólares: <span id="valor"></span></h6>
+				  </div>
+					<script>
+					  // Obtener los parámetros de la URL
+					  const params = new URLSearchParams(window.location.search);
+				  
+					  // Mostrar los valores en los elementos HTML
+					  document.getElementById("opcion").innerText = params.get("opcion");
+					  document.getElementById("dimension").innerText = params.get("dimension");
+					  document.getElementById("valor").innerText = params.get("valor");
+					</script>
+
+					
+				
+
+				<div class="from1">
+					<h1>Generar Orden</h1>
+					<form action="bd.php" name="ecuamaquetas" method="POST">
+						<label for="nombre">Nombre:</label>
+						<input type="text" id="nombre" name="nombre">
+						<label for="apellido">Apellido:</label>
+						<input type="text" id="apellido" name="apellido">
+						<label for="ciudad">Ciudad:</label>
+						<input type="text" id="ciudad" name="ciudad">
+						<label for="celular">Celular:</label>
+						<input type="text" id="celular" name="celular">
+						<label for="correo">Correo:</label>
+						<input type="email" id="correo" name="correo">
+						<label for="fecha">Fecha:</label>
+						<input type="date" id="fecha" name="fecha">
+						<label for="descripcion">Descripción:</label>
+						<input type="text" id="descripcion" name="descripcion">
+						<br>
+						<div class="enviar">
+							<input type="submit" value="Enviar" id="enviar">
+							<div class="transicion"></div>
+						</div>
+					</form>
+
+				</div>
+				<!-- <form action="bd.php" method="post" enctype="multipart/form-data"></form>-->
+
+			</div>
+
 		</div>
-		
-			
-		
+
 	</header>
-	<!-- END #gtco-header -->
+	<!-- FIN #gtco-header -->
 
 
 	<footer id="gtco-footer" class="gtco-section" role="contentinfo">
 		<div class="gtco-container">
 			<div class="row row-pb-md">
 				<div class="col-md-8 col-md-offset-2 gtco-cta text-center">
-					<h3>Tienes algun problema con la cotizacion?</h3>
+					<h3>¿Tienes algún problema con la cotización?</h3>
 					<p><a href="#" class="btn btn-white btn-outline">Contacto</a></p>
 				</div>
 			</div>
 			<div class="row row-pb-md">
 				<div class="col-md-4 gtco-widget gtco-footer-paragraph">
 					<h3>Ecuamaquetas</h3>
-					<p>Por favor especifique el inconveniente dado, le estaremos respondiendo lo mas pronto posible
-					</p>
+					<p>Por favor, especifique el inconveniente dado, le responderemos lo más pronto posible.</p>
 				</div>
 				<div class="col-md-4 gtco-footer-link">
 					<div class="row">
 						<div class="col-md-6">
 							<ul class="gtco-list-link">
 								<li><a href="#">Inicio</a></li>
-								<li><a href="#">cotizacion</a></li>
-								<li><a href="#">Galeria</a></li>
-								<li><a href="#">Ubicacion</a></li>
+								<li><a href="#">Cotización</a></li>
+								<li><a href="#">Galería</a></li>
+								<li><a href="#">Ubicación</a></li>
 								<li><a href="#">Contacto</a></li>
 							</ul>
 						</div>
@@ -161,10 +181,10 @@
 				<div class="col-md-4 gtco-footer-subscribe">
 					<form class="form-inline">
 						<div class="form-group">
-							<label class="sr-only" for="exampleInputEmail3">Email address</label>
-							<input type="email" class="form-control" id="" placeholder="Email">
+							<label class="sr-only" for="exampleInputEmail3">Dirección de correo electrónico</label>
+							<input type="email" class="form-control" id="" placeholder="Correo electrónico">
 						</div>
-						<button type="submit" class="btn btn-primary">Send</button>
+						<button type="submit" class="btn btn-primary">Enviar</button>
 					</form>
 				</div>
 			</div>
@@ -173,11 +193,11 @@
 			<div class="gtco-container">
 				<div class="row">
 					<div class="col-md-6 text-left">
-						<p><small>&copy; 2016 Free HTML5. All Rights Reserved. </small></p>
+						<p><small>&copy; 2016 Free HTML5. Todos los derechos reservados. </small></p>
 					</div>
 					<div class="col-md-6 text-right">
-						<p><small>Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> Demo
-								Images: <a href="http://pixeden.com/" target="_blank">Pixeden</a> &amp; <a
+						<p><small>Diseñado por <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> Imágenes
+								de demostración: <a href="http://pixeden.com/" target="_blank">Pixeden</a> &amp; <a
 									href="http://unsplash.com" target="_blank">Unsplash</a></small> </p>
 					</div>
 				</div>
@@ -190,6 +210,7 @@
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
 	</div>
+
 
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
@@ -206,57 +227,6 @@
 	<script src="js/magnific-popup-options.js"></script>
 	<!-- Main -->
 	<script src="js/main.js"></script>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-
-
-
-	<script>
-		// Agregar un evento de clic al botón
-		document.getElementById("pay-button").addEventListener("click", function (event) {
-			event.preventDefault(); // Evitar el comportamiento predeterminado del formulario
-
-			// Obtener los valores de los campos del formulario
-			let nombre = document.getElementById("nombre").value;
-			let apellido = document.getElementById("apellido").value;
-			let ciudad = document.getElementById("ciudad").value;
-			let celular = document.getElementById("celular").value;
-			let correo = document.getElementById("correo").value;
-			let fecha = document.getElementById("fecha").value;
-			let descripcion = document.getElementById("descripcion").value;
-
-			
-			const datos = {
-      nombre: nombre,
-      apellido: apellido,
-      celular: celular,
-	  cuidad: ciudad,
-      correo: correo,
-	  fecha: fecha,
-	  descripcion: descripcion
-
-    };
-
-			// Mostrar los datos guardados en la consola
-			console.log("Nombre:", nombre);
-			console.log("Apellido:", apellido);
-			console.log("Celular:", celular);
-			console.log("Correo:", correo);
-
-
-			   // Enviar los datos mediante una petición AJAX al servidor
-			   $.post("bd.php", datos, function (response) {
-      console.log(response);
-
-			// Aquí puedes realizar otras acciones con los datos guardados, como enviarlos a un servidor o almacenarlos en una base de datos
-
-			alert("Datos guardados exitosamente");
-		});
-		});
-	</script>
-	----------------------------------------------------------------------------------------------------------------
-
-	
 </body>
 
 </html>
